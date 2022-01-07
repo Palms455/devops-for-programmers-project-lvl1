@@ -1,8 +1,8 @@
 version: "3"
 services:
   app:
+    image: palms450/app-demo:latest
     build:
+      dockerfile: Dockerfile.production
       context: .
-    volumes:
-      - ./app:/app
-    command: make test
+    command:  make test
