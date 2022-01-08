@@ -1,3 +1,6 @@
+env_init:
+	cp -n .env.example .env || true
+
 setup:
 	npm ci
 
