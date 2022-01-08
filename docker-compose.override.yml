@@ -1,5 +1,17 @@
 version: "3"
 services:
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./services/Caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
   app:
     build:
       dockerfile: Dockerfile
@@ -8,3 +20,7 @@ services:
     volumes:
       - ./app:/app
     command: make dev
+
+volumes:
+  caddy_data:
+  caddy_config:
