@@ -24,19 +24,19 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          dockerfile: Dockerfile.production
+          file: Dockerfile.production
           load: true
           tags: ${{ env.TEST_TAG }}
 
       - name: Test
         run: |
-          docker run --rm ${{ env.TEST_TAG }}
+          make compose-test
 
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: .
-          dockerfile: Dockerfile.production
+          file: Dockerfile.production
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.PROD_TAG }}
