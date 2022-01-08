@@ -9,7 +9,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-  
+
       - uses: actions/checkout@v2
 
       - name: Set up Docker Buildx
@@ -43,4 +43,4 @@ jobs:
           file: Dockerfile.production
           cache-from: type=registry,ref=${{ env.IMG_NAME }}:test
           push: true
-          tags: ${{ env.IMG_NAME }}::latest
+          tags: ${{ env.IMG_NAME }}:latest
