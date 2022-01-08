@@ -16,3 +16,6 @@ make env_init - инициализация .env файла. Содержимое
     2. make compose-test - запуск тестов
     3. make compose-build - создание образа с использованием Dockerfile.production
     4. make compose-push -  загрузка образа в docker hub
+
+### Docker Hub:
+[![Docker](https://badgen.net/badge/icon/docker?icon=docker&label)](https://hub.docker.com/repository/docker/palms450/app-demo)
