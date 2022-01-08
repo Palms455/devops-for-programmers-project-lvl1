@@ -2,7 +2,7 @@ env_init:
 	cp -n .env.example .env || true
 
 setup:
-	npm ci
+	make env_init && npm ci
 
 start:
 	npm start
