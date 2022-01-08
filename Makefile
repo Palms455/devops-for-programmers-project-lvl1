@@ -1,3 +1,6 @@
+env_init:
+	cp -n .env.example .env || true
+
 compose-ci:
 	docker-compose run --rm app npm ci
 
@@ -5,7 +8,7 @@ compose-up:
 	docker-compose up --abort-on-container-exit
 
 compose-test:
-	docker-compose -f docker-compose.yml up --abort-on-container-exit
+	make env_init && docker-compose -f docker-compose.yml up --abort-on-container-exit
 
 compose-build:
 	docker-compose -f docker-compose.yml build app

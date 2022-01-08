@@ -5,4 +5,15 @@ services:
     build:
       dockerfile: Dockerfile.production
       context: .
-    command:  make test
+    command:  bash -c 'sleep 3 && npm test'
+
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

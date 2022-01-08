@@ -12,6 +12,7 @@ services:
       - caddy_config:/config
     depends_on:
       - app
+
   app:
     build:
       dockerfile: Dockerfile
@@ -19,7 +20,9 @@ services:
       - 8080:8080
     volumes:
       - ./app:/app
-    command: make dev
+    env_file:
+      - .env
+    command: bash -c 'sleep 3 && npm start'
 
 volumes:
   caddy_data:
