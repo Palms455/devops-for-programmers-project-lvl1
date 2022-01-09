@@ -1,8 +1,11 @@
+env-init:
+	cp -n ./app/.env.example ./app/.env || true
+
 compose-up:
-	make -C ./app env_init && docker-compose up --abort-on-container-exit
+	make env-init && docker-compose up --abort-on-container-exit
 
 compose-test:
-	make -C ./app env_init && docker-compose -f docker-compose.yml up --abort-on-container-exit
+	make env-init && docker-compose -f docker-compose.yml up --abort-on-container-exit
 
 compose-build:
 	docker-compose -f docker-compose.yml build app
